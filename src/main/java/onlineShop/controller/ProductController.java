@@ -52,7 +52,9 @@ public class ProductController {
 		productService.addProduct(product);
 		MultipartFile image = product.getProductImage();
 		if (image != null && !image.isEmpty()) {
-			Path path = Paths.get("/Users/xxx/products/" + product.getId() + ".jpg");
+			Path path = Paths.get(
+					"/Users/lenghongze/Documents/Programming/Java/EclipseWorkspaces/LO_2/onlineShop/src/main/resources/productImages/"
+							+ product.getId() + ".jpg");
 			try {
 				image.transferTo(new File(path.toString()));
 			} catch (IllegalStateException | IOException e) {
@@ -64,7 +66,9 @@ public class ProductController {
 
 	@RequestMapping(value = "/admin/delete/{productId}")
 	public String deleteProduct(@PathVariable(value = "productId") int productId) {
-		Path path = Paths.get("/Users/xxx/products/" + productId + ".jpg");
+		Path path = Paths.get(
+				"/Users/lenghongze/Documents/Programming/Java/EclipseWorkspaces/LO_2/onlineShop/src/main/resources/productImages/"
+						+ productId + ".jpg");
 
 		if (Files.exists(path)) {
 			try {
